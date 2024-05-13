@@ -17,8 +17,8 @@ export const productsStore = defineStore('products', {
     isLoading: (state) => () => state.loading,
   },
   actions: {
-    async loadProducts() {
-      if (this.getProducts().length > 0) {
+    async loadProducts(categoryId: number | null) {
+      if (this.getProducts().length > 0 && !categoryId) {
         return
       }
 
@@ -27,7 +27,11 @@ export const productsStore = defineStore('products', {
 
         const api = baseApi()
         const request: Response<Product> = await api.REQUEST({
-          path: 'products'
+          path: 'products',
+          query: {
+            responseFields: 'items(id,name,defaultDisplayedPriceFormatted,hdThumbnailUrl)',
+            categoryIds: categoryId
+          }
         })
 
         this.products = request.items
@@ -41,7 +45,10 @@ export const productsStore = defineStore('products', {
 
         const api = baseApi()
         const request: Product = await api.REQUEST({
-          path: `products/${id}`
+          path: `products/${id}`,
+          query: {
+            responseFields: ['id', 'name', 'imageUrl', 'description', 'defaultDisplayedPriceFormatted']
+          }
         })
 
         this.product = request
