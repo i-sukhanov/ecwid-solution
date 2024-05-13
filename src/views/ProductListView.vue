@@ -1,6 +1,8 @@
 <template>
-  <CategoryList :categories="categories" />
-  <ProductList :products="products" />
+  <div class="my-8">
+    <CategoryList :categories="categories" class="mb-8" />
+    <ProductList :products="products" />
+  </div>
 </template>
 
 <script lang="ts" setup>

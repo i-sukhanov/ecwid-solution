@@ -4,6 +4,9 @@ export type Product = {
   price: number
   priceInProductList: number
   defaultDisplayedPriceFormatted: string
+  hdThumbnailUrl: string
+  imageUrl: string
+  description: string
 }
 
 export type ProductList = Product[]

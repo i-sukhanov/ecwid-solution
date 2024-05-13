@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <h2>{{ category.name }}</h2>
-    <img :src="category.thumbnailUrl" :alt="category.name" />
+  <div class="border border-gray-200 rounded overflow-hidden">
+    <img :src="category.thumbnailUrl" :alt="category.name" class="w-full h-48 object-contain" />
+    <div class="p-4">
+      <h2 class="text-lg font-semibold">{{ category.name }}</h2>
+    </div>
   </div>
 </template>
 
