@@ -43,18 +43,6 @@ export const baseApi = defineStore('baseApi', {
         delete this.requests[requestId];
       }
     },
-    [EActionsApi.CANCEL_REQUEST](requestId: string): void | Promise<boolean> {
-      if (this.requests[requestId]) {
-        this[EActionsApi.DELETE_REQUEST](requestId);
-      }
-      return Promise.resolve(true);
-    },
-    [EActionsApi.CANCEL_ALL_REQUESTS](): void | Promise<boolean> {
-      Object.keys(this.requests).forEach((key) => {
-        this[EActionsApi.CANCEL_REQUEST](key);
-      });
-      return Promise.resolve(true);
-    },
     async [EActionsApi.REQUEST]<T>(config: any): Promise<T> {
       const {
         method = 'GET',
@@ -78,7 +66,6 @@ export const baseApi = defineStore('baseApi', {
           headers: {
             Accept: 'application/json',
             ContentType: 'application/json',
-            AccessControlAllowOrigin: '*',
             Authorization: `Bearer ${TOKEN}`,
             ...headers,
           },

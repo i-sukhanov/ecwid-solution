@@ -1,15 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { RouteNames } from '../enums/RouteNames'
-import HomeView from '@/views/HomeView.vue'
-
+import { RouteNames } from '@/enums/RouteNames'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
             path: '/',
-            name: RouteNames.HOME,
-            component: HomeView
+            redirect: { name: RouteNames.PRODUCTS }
         },
         {
             path: '/products',

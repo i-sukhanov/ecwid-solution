@@ -5,7 +5,15 @@
       <p class="text-gray-600">Your cart is empty.</p>
     </template>
     <template v-else>
-      <ProductList :products="cart" @remove="removeFromCart" canBeRemoved />
+      <ProductList :products="getCart()" @remove="removeFromCart" editable />
+      <div class="flex justify-between mt-4">
+        <button @click="placeOrder" class="bg-green-500 text-white px-4 py-2 rounded">
+          Place Order
+        </button>
+        <button @click="dropCart" class="bg-red-500 text-white px-4 py-2 rounded">
+          Clear Cart
+        </button>
+      </div>
     </template>
   </div>
 </template>
@@ -14,5 +22,11 @@
 import ProductList from '@/components/product/ProductList.vue'
 import { cartStore } from '@/store/cart'
 
-const { cart, removeFromCart, cartTotalItems } = cartStore()
+const { getCart, removeFromCart, cartTotalItems, dropCart } = cartStore()
+
+const placeOrder = () => {
+  alert('Order placed!')
+
+  dropCart()
+}
 </script>

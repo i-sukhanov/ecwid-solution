@@ -4,12 +4,14 @@ import { useLocalStorage } from '@/helpers/localStorage'
 import { LocalStorageKeys } from '@/enums/LocalStorage'
 const { getItem, setItem, removeItem } = useLocalStorage<ProductList>(LocalStorageKeys.CART)
 
-
 export const cartStore = defineStore('cart', {
-  state: (): { cart: ProductList } => {
-    return { cart: [] };
+  state: () => {
+    return {
+      cart: getItem() || []
+    };
   },
   getters: {
+    getCart: (state) => () => state.cart,
     isAlreadyInCart: (state) =>
       (id: number) =>
         state.cart.some((product) => product.id === id),
@@ -18,7 +20,7 @@ export const cartStore = defineStore('cart', {
   actions: {
     addToCart(product: Product) {
       setItem([...this.cart, product])
-      this.cart = getItem() || []
+      this.cart = [...this.cart, product]
     },
     removeFromCart(id: number) {
       const updatedCart = this.cart.filter((product) => product.id !== id)

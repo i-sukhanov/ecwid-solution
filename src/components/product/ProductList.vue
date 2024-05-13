@@ -4,7 +4,7 @@
       v-for="product in products"
       :key="product.id"
       :product="product"
-      :canBeRemoved="canBeRemoved"
+      :editable="editable"
       @remove="emit('remove', product.id)"
       class="p-4 border border-gray-200 rounded"
     />
@@ -21,6 +21,6 @@ const emit = defineEmits<{
 
 defineProps<{
   products: ProductList
-  canBeRemoved?: boolean
+  editable?: boolean
 }>()
 </script>

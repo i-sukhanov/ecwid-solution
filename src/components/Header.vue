@@ -9,27 +9,28 @@ const { cartTotalItems } = cartStore()
   <header class="bg-gray-800 text-white">
     <div class="wrapper py-4 flex justify-between items-center p-4">
       <nav>
-        <RouterLink to="/" class="mr-4">Home</RouterLink>
         <RouterLink to="/products">Products</RouterLink>
       </nav>
       <RouterLink to="/cart" class="text-xl relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-8 w-8"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="currentColor"
+          stroke="white"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <path d="M2 2h5l2.3 9H19M16 21a2 2 0 01-2 2h-4a2 2 0 01-2-2"></path>
-          <circle cx="10" cy="20" r="1"></circle>
-          <circle cx="17" cy="20" r="1"></circle>
+          <circle cx="9" cy="21" r="1" />
+          <circle cx="20" cy="21" r="1" />
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.74a2 2 0 0 0 2-1.61L23 6H6" />
         </svg>
+
         <span
           v-if="cartTotalItems() > 0"
-          class="absolute top-0 right-0 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs"
+          class="absolute bottom-3 left-5 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs"
           >{{ cartTotalItems() }}</span
         >
       </RouterLink>
