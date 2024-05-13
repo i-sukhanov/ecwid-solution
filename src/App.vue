@@ -6,7 +6,7 @@ import HeaderC from './components/Header.vue'
 <template>
   <div>
     <HeaderC />
-    <div class="wrapper">
+    <div class="wrapper p-4">
       <RouterView />
     </div>
   </div>

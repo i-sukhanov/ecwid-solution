@@ -7,7 +7,7 @@ const { cartTotalItems } = cartStore()
 
 <template>
   <header class="bg-gray-800 text-white">
-    <div class="wrapper py-4 flex justify-between items-center">
+    <div class="wrapper py-4 flex justify-between items-center p-4">
       <nav>
         <RouterLink to="/" class="mr-4">Home</RouterLink>
         <RouterLink to="/products">Products</RouterLink>
